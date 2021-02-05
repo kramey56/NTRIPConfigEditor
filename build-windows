@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#rvern="$(./vcs-revno)"
+mingwb="$(ls /usr/ | grep mingw32 | grep -v amd64 | head --lines 1)"
+qtwind="$(pwd)/qt4-win"
+qtx11d="$(pwd)/qt4-x11"
+
+if [ ! -d release ]
+then
+mkdir release
+fi
+
+$qtx11d/bin/lrelease NTRIPConfigEditor.pro
+./qmake-windows
+make
+$mingwb-strip --strip-all release/NTRIPConfigEditor.exe
+#mv release/unetbootin.exe release/unetbootin-windows-$rvern.exe
+#./upx --lzma release/unetbootin-windows-$rvern.exe
+#mv release/NTRIPConfigEditor.exe release/NTRIPConfigEditor.exe
+#./upx --lzma release/NTRIPConfigEditor.exe
+

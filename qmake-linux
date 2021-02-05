@@ -1,0 +1,6 @@
+#!/bin/sh
+
+qtwind="$(pwd)/qt4-win"
+qtx11d="$(pwd)/qt4-x11"
+
+$qtx11d/bin/qmake -config release -spec $qtx11d/mkspecs/linux-g++-32 "DEFINES += STATICLINUX" "QMAKE_INCDIR_QT = $qtx11d/include" "QMAKE_LIBDIR_QT = $qtx11d/lib" "QMAKE_QMAKE = /usr/share/qt4/bin/qmake" "QMAKE_MOC = /usr/share/qt4/bin/moc" "QMAKE_UIC = /usr/share/qt4/bin/uic" "QMAKE_RCC = /usr/share/qt4/bin/rcc" "RESOURCES += configEdit.qrc" "$@"

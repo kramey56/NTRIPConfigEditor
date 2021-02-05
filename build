@@ -1,0 +1,17 @@
+make clean
+rm Makefile*
+rm release/*
+
+#./mkpotfile
+
+./build-windows
+if [ $? != 0 ]; then
+    exit $?
+fi
+make clean
+
+./build-linux
+
+if [ $? != 0 ]; then
+    exit $?
+fi

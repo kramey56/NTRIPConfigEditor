@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/images" lang="English">
+        <file>HGPS_Logo.bmp</file>
+    </qresource>
+</RCC>

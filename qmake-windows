@@ -1,0 +1,7 @@
+#!/bin/sh
+
+qtwind="$(pwd)/qt4-win"
+qtx11d="$(pwd)/qt4-x11"
+mingwb="$(ls /usr/ | grep mingw32 | grep -v amd64 | head --lines 1)"
+
+$qtx11d/bin/qmake -config release -spec $qtx11d/mkspecs/win32-g++ "DEFINES += STATICWINDOWS" "QMAKE_CC = $mingwb-gcc" "QMAKE_CXX = $mingwb-g++" "QMAKE_INCDIR_QT = $qtwind/include" "QMAKE_LIBDIR_QT = $qtwind/lib" "QMAKE_LINK = $mingwb-g++" "QMAKE_COPY_DIR = cp -r" "QMAKE_COPY = cp" "QMAKE_COPY_DIR = cp -r" "QMAKE_MOVE = mv" "QMAKE_DEL_FILE = rm" "QMAKE_CHK_DIR_EXISTS = test -d" "QMAKE_QMAKE = /usr/share/qt4/bin/qmake" "QMAKE_MOC = /usr/share/qt4/bin/moc" "QMAKE_UIC = /usr/share/qt4/bin/uic" "QMAKE_RCC = /usr/share/qt4/bin/rcc" "QMAKE_RC = $mingwb-windres" "RESOURCES += configEdit.qrc" "QMAKE_LFLAGS += -Wl,-V,-subsystem,windows" "$@"
